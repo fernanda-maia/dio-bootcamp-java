@@ -3,30 +3,34 @@ package estrutura;
 public class Main {
 
     public static void main(String[] args) {
+        Queue<String> myQueue = new Queue<>();
         Stack<String> myStack = new Stack<>();
 
-        Node<String> node1 = new Node<>("NODE 1");
-        Node<String> node2 = new Node<>("NODE 2");
-        Node<String> node3 = new Node<>("NODE 3");
-        Node<String> node4 = new Node<>("NODE 4");
-        Node<String> node5 = new Node<>("NODE 5");
-        Node<String> node6 = new Node<>("NODE 6");
+        myQueue.enqueue(new Node<>("NODE FIRST IN"));
+        myStack.push(new Node<>("NODE FIRST IN"));
 
+        for(int i = 1; i < 5; i++) {
+            myQueue.enqueue(new Node<>("NODE " + i));
+            myStack.push(new Node<>("NODE " + i));
+        }
 
-        myStack.push(node1);
-        myStack.push(node2);
-        myStack.push(node3);
-        myStack.push(node4);
-        myStack.push(node5);
-        myStack.push(node6);
+        myQueue.enqueue(new Node<>("NODE LAST IN"));
+        myStack.push(new Node<>("NODE LAST IN"));
 
+        System.out.println(myQueue);
         System.out.println(myStack);
 
-        System.out.println(myStack.pop());
+        System.out.println("**** REMOVE ****");
+        System.out.println("QUEUE: " + myQueue.dequeue());
+        System.out.println("STACK: " + myStack.pop());
 
-        System.out.println(myStack);
+        System.out.println("\n**** FIRST / TOP ****");
+        System.out.println(myQueue.first());
         System.out.println(myStack.top());
 
+
+        System.out.println(myQueue);
+        System.out.println(myStack);
 
     }
 
