@@ -8,13 +8,16 @@ public class Queue<T> {
         this.entryNode = null;
     }
 
-    public void enqueue(Node<T> queue) {
+    public void enqueue(T object) {
+        Node<T> queue = new Node<>(object);
+
         queue.setNextNode(entryNode);
         this.entryNode = queue;
     }
 
-    public Node<T> dequeue() {
-        Node<T> firstNode = this.first();
+    public T dequeue() {
+        T object;
+        Node<T> firstNode = this.firstNode();
         Node<T> tempNode = this.entryNode;
 
         this.entryNode = firstNode == tempNode
@@ -30,10 +33,29 @@ public class Queue<T> {
             tempNode.setNextNode(null);
         }
 
-        return firstNode;
+        object = firstNode != null
+                ? firstNode.getPayload()
+                : null;
+
+        return object;
     }
 
-    public Node<T> first() {
+    public T first() {
+        T object = null;
+
+        if(!this.isEmpty()) {
+            Node<T> node = this.firstNode();
+            object = node.getPayload();
+        }
+
+        return object;
+    }
+
+    public Boolean isEmpty() {
+        return this.entryNode == null;
+    }
+
+    private Node<T> firstNode() {
         Node<T> tempNode = this.entryNode;
 
         if(!this.isEmpty()) {
@@ -43,10 +65,6 @@ public class Queue<T> {
         }
 
         return tempNode;
-    }
-
-    public Boolean isEmpty() {
-        return this.entryNode == null;
     }
 
     @Override

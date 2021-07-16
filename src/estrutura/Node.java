@@ -24,6 +24,10 @@ public class Node<T> {
         return this.nextNode;
     }
 
+    public T getPayload() {
+        return this.payload;
+    }
+
     @Override
     public String toString() {
         return this.payload.toString();

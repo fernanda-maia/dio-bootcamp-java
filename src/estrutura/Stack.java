@@ -8,26 +8,28 @@ public class Stack<T> {
         this.entryStack = null;
     }
 
-    public void push(Node<T> node) {
+    public void push(T object) {
         Node<T> tempNode = this.entryStack;
-        this.entryStack = node;
+        this.entryStack = new Node<>(object);
 
         this.entryStack.setNextNode(tempNode);
-
     }
 
-    public Node<T> pop() {
-        Node<T> tempNode = this.entryStack;
+    public T pop() {
+        T object = null;
 
         if(!this.isEmpty()) {
+            object = this.entryStack.getPayload();
             this.entryStack = this.entryStack.getNextNode();
         }
 
-        return tempNode;
+        return object;
     }
 
-    public Node<T> top() {
-        return this.entryStack;
+    public T top() {
+        return !this.isEmpty()
+                ? this.entryStack.getPayload()
+                : null;
     }
 
     public Boolean isEmpty() {
