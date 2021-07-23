@@ -16,6 +16,11 @@ public class Node<T> {
         this.payload = payload;
     }
 
+    public Node(T payload, Node<T> nextNode) {
+        this.payload = payload;
+        this.nextNode = nextNode;
+    }
+
     public void setNextNode(Node<T> node) {
         this.nextNode = node;
     }
@@ -26,6 +31,20 @@ public class Node<T> {
 
     public T getPayload() {
         return this.payload;
+    }
+
+    public String linkedToString() {
+        StringBuilder stringBuilder = new StringBuilder(this.getPayload().toString());
+        Node<T> node = this.nextNode;
+
+        if(node != null) {
+            stringBuilder.append(" >> ")
+                    .append(node.getPayload().toString());
+        }
+
+        stringBuilder.append(" >> null");
+
+        return stringBuilder.toString();
     }
 
     @Override
