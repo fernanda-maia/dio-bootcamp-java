@@ -1,4 +1,6 @@
-package estrutura;
+package datas.structure;
+
+import datas.nodes.Node;
 
 public class Stack<T> {
 

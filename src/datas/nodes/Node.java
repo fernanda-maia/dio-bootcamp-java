@@ -1,4 +1,4 @@
-package estrutura;
+package datas.nodes;
 
 import java.util.Objects;
 
