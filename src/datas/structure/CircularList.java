@@ -34,7 +34,7 @@ public class CircularList<T> {
         } catch(IndexOutOfBoundsException e) {
             System.err.println(e.getMessage());
         }
-        
+
         return payload;
     }
 
